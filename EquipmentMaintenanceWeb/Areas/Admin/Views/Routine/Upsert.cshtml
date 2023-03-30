@@ -1,0 +1,115 @@
+﻿@model EquipmentMaintenance.Models.ViewModels.RoutineVM
+
+
+
+<form method="post" asp-action="Upsert">
+    
+    <input asp-for="Routine.Id" hidden id="routineId"/>
+    <input asp-for="Routine.DateLastCompleted" hidden/>
+
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">@(Model.Routine.Id!=0?"Update" : "Add") Routine</h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+            
+            <div class="row">
+                <div class="mb-3 col-12">
+                    <label asp-for="Routine.IsActiveStatus">Active</label>
+                    <input asp-for="Routine.IsActiveStatus" class="form-control-input" type="checkbox"/>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.EquipmentId"></label>
+                    <select asp-for="Routine.EquipmentId" asp-items="@Model.EquipmentList" class="form-select">
+                        <option disabled selected>--Select Equipment--</option>
+                    </select> 
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.RoutineDescription"></label>
+                    <input asp-for="Routine.RoutineDescription" class="form-control"/>
+                    <span asp-validation-for="Routine.RoutineDescription" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.ApplicationUserId"></label>
+                    <select asp-for="Routine.ApplicationUserId" asp-items="@Model.ApplicationUsers" class="form-select">
+                        <option disabled selected>--Select Technician--</option>
+                    </select>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.Frequency"></label>
+                    <input asp-for="Routine.Frequency" class="form-control"/>
+                    <span asp-validation-for="Routine.Frequency" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.IntervalId"></label>
+                    <select asp-for="Routine.IntervalId" asp-items="@Model.Intervals" class="form-select">
+                        <option disabled selected>--Select Interval--</option>
+                    </select>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.DaysToOverdue"></label>
+                    <input asp-for="Routine.DaysToOverdue" class="form-control"/>
+                    <span asp-validation-for="Routine.DaysToOverdue" class="text-danger"></span>
+                </div>
+                <div class="col-sm-4 col-md-3">
+                    <label asp-for="Routine.NextDueDate"></label>
+                    <input asp-for="Routine.NextDueDate" class="form-control" id="nextDueDate" type="date"/>
+                    <span asp-validation-for="Routine.NextDueDate" class="text-danger"></span>
+                    <div id="dueDate" class="text-danger" style="display:none">Next Due Date must be equal to or greater than today's date</div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <h4 class="d-flex">
+                        <span class="text-primary">Routine Tasks</span>
+                    </h4>       
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-primary" id="addTask">
+                        <i class="bi bi-plus-circle"></i>
+                            &nbsp;
+                        Add New Task
+                    </button>
+                </div>
+                <div class="col-12 mt-3" id="tasksContainer">
+                    @if(Model.TasksList != null)
+                    {
+                        var taskIndex = 0;
+                        foreach(var task in Model.TasksList)
+                        {
+                            <div class='input-group mb-3'>
+                                <input id="Routine.ListOfTasks_@(taskIndex)__Description" name="Routine.ListOfTasks[@(taskIndex)].Description" class="form-control input-sm rounded iHidden" value="@task.Description"/>
+                                <span class='input-group-btn'><a onClick=Delete('/Admin/Routine/DeleteTask/@task.Id') class='btn btn-danger btn-sm mt-1'><i class='bi bi-trash'></i></a></span>
+                            </div>
+                            <input id='Routine.ListOfTasks_@(taskIndex)__Id' type='hidden' name='Routine.ListOfTasks[@(taskIndex)].Id' value='@task.Id'/>
+                            <input id='Routine.ListOfTasks_@(taskIndex)__RoutineId' type='hidden' name='Routine.ListOfTasks[@(taskIndex)].RoutineId' value='@task.RoutineId'/>
+                            taskIndex++;
+                        }
+                    }
+                </div>
+                <div id="tasksValidationError" class="text-danger" style="display:none"></div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4 col-md-3">
+                    <button type="submit" id="submitButton" class="btn btn-primary" style="width:130px">@(Model.Routine.Id!=0?"Update" : "Add")</button>
+                </div>
+                <div class="col-4 col-md-3">    
+                    <a asp-controller="Routine" asp-action="Index" class="btn btn-secondary" style="width:130px;">Back to List</a>
+                </div>
+            </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="~/js/todaysDate.js"></script>
+    <script src="~/js/Routine/nextDueDatePreset.js"></script>
+    <script src="~/js/Routine/nextDueDateClientSideValidation.js"></script>
+    <script src="~/js/Routine/taskFieldsClientSideValidation.js"></script>
+    <script src="~/js/Routine/newTask.js"></script>
+    <script src="~/js/Routine/deleteExistingTask.js"></script>
+}
+

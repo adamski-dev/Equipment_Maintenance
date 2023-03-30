@@ -1,0 +1,37 @@
+﻿
+<div class="container p-3" style="">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">My PM's</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="PM" asp-action="CreateUnplannedWorkOrder" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                &nbsp;
+                Log Unplanned
+            </a>
+        </div>
+    </div>
+    <div class="mt-2">
+        <table id="tableData" class="table table-bordered row-border" style="width:100%">
+            <thead>
+                <tr>
+                    <th>W/O Number</th>
+                    <th>Item</th>
+                    <th>Description</th>
+                    <th>Resource</th>
+                    <th>Due</th>
+                    <th>Overdue</th>
+                    <th>Type</th>
+                    <th>Completed</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    
+</div>
+
+@section Scripts{
+    <script src="~/js/PM/pm.js"></script>
+}

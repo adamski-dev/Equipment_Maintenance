@@ -1,0 +1,69 @@
+﻿@model EquipmentMaintenance.Models.ViewModels.EquipmentVM
+
+<form method="post" asp-action="Upsert">
+    <input asp-for="Equipment.Id" hidden />
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">@(Model.Equipment.Id!=0?"Update" : "Add") Equipment</h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3 col-12">
+            <label asp-for="Equipment.InServiceStatus">Is Equipment In Service?</label>
+            <input asp-for="Equipment.InServiceStatus" class="form-control-input" type="checkbox"/> 
+        </div>
+        <div class="row">
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.UniqueIdentifier"></label>
+                    <input asp-for="Equipment.UniqueIdentifier" class="form-control"/>
+                    <span asp-validation-for="Equipment.UniqueIdentifier" class="text-danger"></span>
+                </div>
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.Description"></label>
+                    <input asp-for="Equipment.Description" class="form-control"/>
+                    <span asp-validation-for="Equipment.Description" class="text-danger"></span>
+                </div>
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.ModelNumber"></label>
+                    <input asp-for="Equipment.ModelNumber" class="form-control"/>
+                    <span asp-validation-for="Equipment.ModelNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.SerialNumber"></label>
+                    <input asp-for="Equipment.SerialNumber" class="form-control"/>
+                    <span asp-validation-for="Equipment.SerialNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.EquipmentTypeId"></label>
+                    <select asp-for="Equipment.EquipmentTypeId" asp-items="@Model.EquipmentTypeList" class="form-select">
+                        <option disabled selected>--Select Equipment Type--</option>
+                    </select>
+                    <span asp-validation-for="Equipment.EquipmentTypeId" class="text-danger"></span>
+                </div>
+                <div class="mb-2 col-sm-12 col-md-6">
+                    <label asp-for="Equipment.LocationId"></label>
+                    <select asp-for="Equipment.LocationId" asp-items = "@Model.LocationList" class="form-select">
+                        <option disabled selected>--Select Location--</option>
+                    </select>
+                    <span asp-validation-for="Equipment.LocationId" class="text-danger"></span>
+                </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6 col-md-6">
+                <button type="submit" class="btn btn-primary" style="width:130px">@(Model.Equipment.Id!=0?"Update" : "Add")
+                </button>
+            </div>
+            <div class="col-6 col-md-6">    
+                <a asp-controller="Equipment" asp-action="Index" class="btn btn-secondary" style="width:130px;">
+                    Back to List
+                </a>
+            </div>
+        </div>     
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

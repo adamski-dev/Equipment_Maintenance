@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mt-5" style="color:#f5655a; text-shadow: 2px 2px 2px #F5F5F5; font-weight:bold;">Equipment Maintenance</h1>
+    <p class="mt-4" style="font-size: 20px; color:#404040; text-shadow: 1px 1px #F5F5F5; /*font-weight:bold;*/">A simple way to maintain your production equipment.</p>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <button class="button-33 mt-3"><a style="color:#f5655a; text-decoration:none;"  id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></button>
+    }
+</div>
+
+<div class="row mt-5">
+    <div class="col-sm-6 col-md-4 text-center" style="overflow: hidden;">
+        <figure>
+            <img src="~/lib/images/engines.jpg">
+        </figure>
+    </div>
+    <div class="col-sm-6 col-md-4 text-center" style="overflow: hidden;">
+        <figure>
+            <img src="~/lib/images/robotAssy.jpeg">
+        </figure>
+    </div>
+    <div class="row-cols-sm-auto col-md-4 text-center" style="overflow: hidden;">
+        <figure>
+            <img src="~/lib/images/digital.png" />
+        </figure>
+    </div>
+</div>
+
+
+
+
+
+    

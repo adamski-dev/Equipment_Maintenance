@@ -1,0 +1,64 @@
+﻿@model EquipmentMaintenance.Models.ViewModels.PmVM
+
+
+<form method="post" asp-action="CreateUnplannedWorkOrder">
+
+    <input asp-for="WorkOrder.WeekNumber" hidden />
+    <input asp-for="WorkOrder.ApplicationUserId" hidden />
+    <input asp-for="WorkOrder.DateDue" hidden />
+    <input asp-for="WorkOrder.CompletedFlag" hidden />
+    <input asp-for="WorkOrder.UnplannedFlag" hidden />
+    <input asp-for="WorkOrder.DateCompleted" hidden />
+
+
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">Log Unplanned Work</h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="row">
+            <div class="col-md-6">
+                <label asp-for="WorkOrder.WorkOrderNumber">Work Order Number</label>
+                <input asp-for="WorkOrder.WorkOrderNumber" class="form-control" readonly/> 
+                </div>
+            <div class="col-md-6">
+                <label asp-for="WorkOrder.EquipmentId">Item</label>
+                <select asp-for="WorkOrder.EquipmentId" asp-items="@Model.Equipment" class="form-select">
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="WorkOrder.JobDescription">Job Description</label>
+                <input asp-for="WorkOrder.JobDescription" class="form-control"/>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="WorkOrder.DateCreated">Created</label>
+                <input asp-for="WorkOrder.DateCreated" class="form-control" id="createdDate" type="date" readonly/>
+                <span asp-validation-for="WorkOrder.DateCreated" class="text-danger"></span>
+            </div>
+            <div class="mt-1 col-12">
+                <label asp-for="WorkOrder.Comment"></label>
+                <textarea asp-for="WorkOrder.Comment" class="form-control"></textarea>
+                <span asp-validation-for="WorkOrder.Comment" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-4 col-md-3">
+                <button type="submit" id="submitButton" class="btn btn-primary" style="width:130px">Confirm</button>
+            </div>
+            <div class="col-4 col-md-3">    
+                <a asp-controller="PM" asp-action="Index" class="btn btn-secondary" style="width:130px;">Back to PM's</a>
+            </div>
+        </div>     
+            
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="~/js/PM/changeDateFormat.js"></script>
+}
+
+

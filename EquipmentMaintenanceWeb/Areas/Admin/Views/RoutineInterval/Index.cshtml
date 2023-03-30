@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RoutineInterval>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Routine Intervals</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="RoutineInterval" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                &nbsp;
+                Add New Interval
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Routine Interval
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td width="85%">
+                        @obj.Interval
+                    </td>
+                    <td class="text-center">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="RoutineInterval" asp-action="Edit" asp-route-id="@obj.Id"
+                            class="btn btn-primary mx-2 btn-sm"><i class="bi bi-pencil-square"></i></a>
+
+                            <a asp-controller="RoutineInterval" asp-action="Delete" asp-route-id="@obj.Id"
+                            class="btn btn-danger mx-2 btn-sm"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>  
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

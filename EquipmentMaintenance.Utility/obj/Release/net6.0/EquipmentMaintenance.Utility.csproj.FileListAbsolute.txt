@@ -1,0 +1,12 @@
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\bin\Release\net6.0\EquipmentMaintenance.Utility.deps.json
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\bin\Release\net6.0\EquipmentMaintenance.Utility.dll
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\bin\Release\net6.0\EquipmentMaintenance.Utility.pdb
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.csproj.AssemblyReference.cache
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.AssemblyInfoInputs.cache
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.AssemblyInfo.cs
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.csproj.CoreCompileInputs.cache
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.dll
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\refint\EquipmentMaintenance.Utility.dll
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\EquipmentMaintenance.Utility.pdb
+C:\Users\k105686\Desktop\C#\EquipmentMaintenance\EquipmentMaintenance\EquipmentMaintenance.Utility\obj\Release\net6.0\ref\EquipmentMaintenance.Utility.dll

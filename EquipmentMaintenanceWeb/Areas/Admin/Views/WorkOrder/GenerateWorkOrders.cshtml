@@ -1,0 +1,45 @@
+﻿@model EquipmentMaintenance.Models.ViewModels.WorkOrderVM
+
+
+<form method="post" asp-action="GenerateWorkOrders">
+    
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">Generate Work Orders </h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        
+            <div class="col-12">
+                <div class="row">
+                    
+                    <div class="mb-3 col-6">
+                        <label asp-for="WorkOrder.DateDue">For Routines Due Before</label>
+                        <input asp-for="WorkOrder.DateDue" class="form-control" id="dueDateBy" type="date"/>
+                        <span asp-validation-for="WorkOrder.DateDue" class="text-danger"></span>
+                        <div id="dueDate" class="text-danger" style="display:none">Routines Due Before must be greater than today's date</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-3 ml-2">
+                        <button type="submit" id="submitButton" class="btn btn-primary" style="width:150px">Generate</button>
+                    </div>
+                    <div class="col-3 text-end mr-2">    
+                        <a asp-controller="WorkOrder" asp-action="Index" class="btn btn-secondary" style="width:150px;">Back to List</a>
+                    </div>
+                </div>     
+            </div>
+            
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="~/js/todaysDate.js"></script>
+    <script src="~/js/WorkOrder/dueDateByPresetAndCheck.js"></script>
+}
+

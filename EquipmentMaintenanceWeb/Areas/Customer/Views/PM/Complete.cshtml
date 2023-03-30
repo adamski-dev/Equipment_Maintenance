@@ -1,0 +1,87 @@
+﻿@model EquipmentMaintenance.Models.ViewModels.PmVM
+
+
+<form method="post" asp-action="Complete">
+    
+    <input asp-for="WorkOrder.Id" hidden />
+    <input asp-for="WorkOrder.WorkOrderRoutineId" hidden/>
+    <input asp-for="WorkOrder.DateCreated" id="createdDate" type="date" hidden />
+    <input asp-for="WorkOrder.EquipmentId" hidden />
+    <input asp-for="WorkOrder.ApplicationUserId" hidden />
+    <input asp-for="WorkOrder.WeekNumber" hidden />
+    <input asp-for="WorkOrder.CompletedFlag" id="completedWorkOrder" type="checkbox" hidden/>
+
+    <div class="border p-3 mt-4 row">
+        <div class="row pb-2">
+            <h2 class="text-primary">Complete Work Order</h2>
+            <hr/>
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+            
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <label asp-for="WorkOrder.WorkOrderNumber">Work Order Number</label>
+                <input asp-for="WorkOrder.WorkOrderNumber" class="form-control" readonly/>
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <label asp-for="WorkOrder.JobDescription">Job Description</label>
+                <input asp-for="WorkOrder.JobDescription" class="form-control" readonly/>
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <label asp-for="WorkOrder.DateDue">Date Due</label>
+                <input asp-for="WorkOrder.DateDue" class="form-control" id="dueDate" type="date" readonly/>
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <label asp-for="WorkOrder.DateOverdue">Date Overdue</label>
+                <input asp-for="WorkOrder.DateOverdue" class="form-control" id="overdueDate" type="date" readonly/>
+            </div>
+            <div class="mt-1 col-12">
+                <label asp-for="WorkOrder.Comment"></label>
+                <textarea asp-for="WorkOrder.Comment" class="form-control"></textarea>
+                <span asp-validation-for="WorkOrder.Comment" class="text-danger"></span>
+            </div>
+		</div>
+        <div class="row mt-4">
+            <div class="row pt-1 mb-1">
+                <div class="col-sm-6 col-md-12">
+                    <h4 class="d-flex">
+                        <span class="text-primary">To Do Tasks</span>
+                    </h4>       
+                </div>
+            </div>
+            <div class="col-sm-12" id="tasksContainer">
+                @if(Model.TasksList != null)
+                {
+                    var taskIndex = 0;
+                    foreach(var task in Model.TasksList)
+                    {
+                        <div class='input-group mb-3'>
+                            <input class="form-control input-sm rounded" value="@task.Description" disabled/>
+                            <input type="checkbox" class="btn-check btn-sm" id="@task.Id.ToString()_completeTask"/>
+                            <label class="btn btn-outline-success" for="@task.Id.ToString()_completeTask">Completed</label>
+                        </div>
+                        taskIndex++;
+                    }
+                }
+            </div>
+            <div id="tasksValidationError" class="text-danger" style="display:none"></div>
+            <div class="row mt-3">
+                <div class="col-4 col-md-3">
+                    <button type="submit" id="submitButton" class="btn btn-primary" style="width:130px">Submit</button>
+                </div>
+                <div class="col-4 col-md-3">    
+                    <a asp-controller="PM" asp-action="Index" class="btn btn-secondary" style="width:130px;">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script src="~/js/WorkOrder/changeDatesFormat.js"></script>
+    <script src="~/js/WorkOrder/workOrderComplete.js"></script>
+}
+
