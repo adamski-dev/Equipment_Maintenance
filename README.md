@@ -3,7 +3,7 @@
 
 * Database is seeded with:
   1. Super user: super@gmail.com & password: Super123!
-  2. User: user@gmail & password: User123!
+  2. User: user@gmail.com & password: User123!
 
 ## Content:
 * .Net Core 6
@@ -14,3 +14,8 @@
 * jQuery Datatables
 * Razor Pages
 * Identity
+
+## Super user Features:
+
+## User Features:
+
