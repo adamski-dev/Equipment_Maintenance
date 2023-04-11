@@ -16,6 +16,12 @@
 * Identity
 
 ## Super user Features:
-
+* Add / Edit / Delete Equipment, Equipment type, Location, Routine
+* Generate work orders
+* Manage work orders / edit specific work order resource 
+* Create new user from admin level
 ## User Features:
+* Display list of work orders due
+* Complete work orders
+* Log an unplanned maintenance
 
